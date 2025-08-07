@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Price Book Calculator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>Price Book Calculator</h1>
+
+  <section class="selector">
+    <label for="region">Region:</label>
+    <select id="region"></select>
+
+    <label for="country">Country:</label>
+    <select id="country"></select>
+
+    <label>Currency:</label>
+    <span id="currency">-</span>
+  </section>
+
+  <nav class="tabs">
+    <button onclick="showSection('yearly')">Yearly Rate</button>
+    <button onclick="showSection('daily')">Daily Rates</button>
+    <button onclick="showSection('dispatchRate')">Dispatch Rates</button>
+    <button onclick="showSection('dispatchPricing')">Dispatch Pricing</button>
+    <button onclick="showSection('termBased')">Term Based Project</button>
+  </nav>
+
+  <section id="yearly" class="section">
+    <h2>Yearly Rate</h2>
+    <select id="yearlyOptionCatogory">
+        <option value="yearlyL1">L1</option>
+        <option value="yearlyL2">L2</option>
+        <option value="yearlyL3">L3</option>
+        <option value="yearlyL4">L4</option>
+        <option value="yearlyL5">L5</option>
+      </select>
+    <select id="yearlyOption">
+      <option value="yearlyWith">With Backfill</option>
+      <option value="yearlyWithout">Without Backfill</option>
+    </select>
+    <h4>Number of years</h4>
+    <input type="number" id="yearCount" min="1" value="1" placeholder="How many years?" />
+    <button onclick="calculateYearly()">Calculate</button>
+  </section>
+
+  <section id="daily" class="section">
+    <h2>Daily Rates</h2>
+    <select id="dailyOption">
+      <option value="Full">Full Day</option>
+      <option value="Half">Half Day</option>
+    </select>
+    <select id="dailyOptionCatogory">
+      <option value="dailyL1">L1</option>
+      <option value="dailyL2">L2</option>
+      <option value="dailyL3">L3</option>
+    </select>
+    <h4>Number of days</h4>
+    <input type="number" id="dayCount" min="1" value="1" placeholder="How many days?" />
+    <button onclick="calculateDaily()">Calculate</button>
+  </section>
+
+  <section id="dispatchRate" class="section">
+    <h2>Dispatch Rates</h2>
+    <select id="dispatchRateTitle">
+      <option value="dr1">9x5x4 Incident Response</option>
+      <option value="dr2">24x7x4 Response to site</option>
+      <option value="dr3">SBD Business Day Resolution to site</option>
+      <option value="dr4">NBD Resolution to site</option>
+      <option value="dr5">2BD Resolution to site</option>
+      <option value="dr6">3BD Resolution to site</option>
+    </select>
+    <h4>Number of days</h4>
+    <input type="number" id="dispatchRateDays" min="1" value="1" placeholder="Days" />
+    <h4>Number of additional hours</h4>
+    <input type="number" id="additionalRate" min="0" value="0" placeholder="Additional hourly rate" />
+    <button onclick="calculateDispatchRate()">Calculate</button>
+  </section>
+
+  <section id="dispatchPricing" class="section">
+    <h2>Dispatch Pricing</h2>
+    <select id="dispatchPricingTitle">
+      <option value="dp1">2 BD Resolution to site</option>
+      <option value="dp2">3 BD Resolution to site</option>
+      <option value="dp3">4 BD Resolution to site</option>
+    </select>
+    <h4>Number of days</h4>
+    <input type="number" id="dispatchPricingDays" min="1" value="1" placeholder="Days" />
+    <button onclick="calculateDispatchPricing()">Calculate</button>
+  </section>
+
+  <section id="termBased" class="section">
+    <h2>Term Based Project</h2>
+    <select id="termBasedOptionCatogory">
+      <option value="termL1">L1</option>
+      <option value="termL2">L2</option>
+      <option value="termL3">L3</option>
+      <option value="termL4">L4</option>
+      <option value="termL5">L5</option>
+    </select>
+    <h4>Number of months</h4>
+    <input type="number" id="termMonths" min="1" value="1" placeholder="Days" />
+    <button onclick="calculateTermRate()">Calculate</button>
+  </section>
+
+  <div id="output"></div>
+
+  <div id="popup" class="popup" style="display:none">
+    <div class="popup-content">
+      <p id="popupText"></p>
+      <button onclick="closePopup()">Close</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
